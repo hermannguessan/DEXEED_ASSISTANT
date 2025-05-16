@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistant Intelligent - Dexeed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #09005eff;
+      --secondary: #ffffffff;
+      --text: #FFFFFFA8;
+      --accent: #ed0a67ff;
+      --tertiary: #00a6d7ff;
+      --meta: #AAAAAA;
+      --border: #E2E2E5;
+      --hover-bg: #FFFFFF30;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 0.5rem;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .topbar button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .topbar button:hover {
+      background-color: #d10858;
+      transform: scale(1.05);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .intro {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      background-color: white;
+      color: black;
+      padding: 1rem;
+      border-radius: 0.75rem;
+    }
+
+    .step {
+      background-color: var(--hover-bg);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      margin-bottom: 3rem;
+      border-left: 4px solid var(--accent);
+      position: relative;
+    }
+
+    .step h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .step p {
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .btn-launch, .btn-view {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-view:hover, .btn-launch:hover {
+      background-color: #d10858;
+      transform: scale(1.05);
+    }
+
+    .image-container {
+      display: none;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">
+      <img src="https://dexeed.org/wp-content/uploads/2025/03/Frame-3.png" alt="Dexeed Logo">
+      
+    </div>
+    <button onclick="launchAssistant()">Lancer l'assistant</button>
+  </div>
+
+  <div class="container">
+    <h1>Votre Assistant IA ultra-performant au service de l'efficacité</h1>
+    <p class="intro">Naviguez, interrogez, obtenez des réponses ultra-rapides grâce à notre IA intelligente. Gagnez du temps, augmentez votre productivité et comprenez vos documents en un instant !</p>
+
+    <div class="step">
+      <h2>Étape 1 : Connexion</h2>
+      <p>Lancez l'application et connectez-vous avec votre compte sécurisé.</p>
+      <a class="btn-view" onclick="toggleImage('img1')">Voir l'image de l'étape</a>
+      <div class="image-container" id="img1">
+        <img src="IMAGES_ETAPES/1.png" alt="Étape 1">
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Étape 2 : Posez vos questions</h2>
+      <p>L’assistant comprend vos intentions et vous guide.</p>
+      <a class="btn-view" onclick="toggleImage('img2')">Voir l'image de l'étape</a>
+      <div class="image-container" id="img2">
+        <img src="IMAGES_ETAPES/2.png" alt="Étape 2">
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Étape 3 : Obtenez vos réponses instantanément</h2>
+      <p style="color:white">Il vous offre la réponse la plus pertinente pour vous faire gagner un temps précieux.</p>
+      <a class="btn-view" onclick="toggleImage('img3')">Voir l'image de l'étape</a>
+      <div class="image-container" id="img3">
+        <img src="IMAGES_ETAPES/3.png" alt="Étape 3">
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button class="btn-launch" onclick="launchAssistant()">Lancer l'assistant</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleImage(id) {
+      const img = document.getElementById(id);
+      img.style.display = img.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function launchAssistant() {
+      if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+        window.chatbase = (...args) => {
+          if (!window.chatbase.q) window.chatbase.q = [];
+          window.chatbase.q.push(args);
+        };
+        window.chatbase = new Proxy(window.chatbase, {
+          get(target, prop) {
+            if (prop === "q") return target.q;
+            return (...args) => target(prop, ...args);
+          }
+        });
+
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "U107URjkc47i9Al_-3GJH";
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script);
+      }
+    }
+  </script>
+</body>
+</html>
