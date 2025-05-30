@@ -162,9 +162,8 @@
   <div class="topbar">
     <div class="logo">
       <img src="https://dexeed.org/wp-content/uploads/2025/03/Frame-3.png" alt="Dexeed Logo">
-      
     </div>
-    <button onclick="launchAssistant()">Lancer l'assistant</button>
+    <button onclick="CustomGPT.open()">Lancer l'assistant</button>
   </div>
 
   <div class="container">
@@ -199,7 +198,7 @@
     </div>
 
     <div style="text-align:center;">
-      <button class="btn-launch" onclick="launchAssistant()">Lancer l'assistant</button>
+      <button class="btn-launch" onclick="CustomGPT.open()">Lancer l'assistant</button>
     </div>
   </div>
 
@@ -208,27 +207,22 @@
       const img = document.getElementById(id);
       img.style.display = img.style.display === 'block' ? 'none' : 'block';
     }
+  </script>
 
-    function launchAssistant() {
-      if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-        window.chatbase = (...args) => {
-          if (!window.chatbase.q) window.chatbase.q = [];
-          window.chatbase.q.push(args);
-        };
-        window.chatbase = new Proxy(window.chatbase, {
-          get(target, prop) {
-            if (prop === "q") return target.q;
-            return (...args) => target(prop, ...args);
-          }
+  <!-- Script CustomGPT -->
+  <script defer src="https://cdn.customgpt.ai/js/chat.js"></script>
+  <script defer>
+    (function(){
+      function init(){
+        CustomGPT.init({
+          p_id: '71429',
+          p_key: '9d6cd17b4f6f828d501ab204983f477f',
+          auto_show: false,
+          hide_default_launcher: true
         });
-
-        const script = document.createElement("script");
-        script.src = "https://www.chatbase.co/embed.min.js";
-        script.id = "U107URjkc47i9Al_-3GJH";
-        script.domain = "www.chatbase.co";
-        document.body.appendChild(script);
       }
-    }
+      document.readyState === 'complete' ? init() : window.addEventListener('load', init);
+    })();
   </script>
 </body>
 </html>
